@@ -1,8 +1,6 @@
-package LinkListEx;
 
 public class CustomLinkList
 {
-
     Node head;
 
     static class Node
@@ -31,20 +29,42 @@ public class CustomLinkList
 
         Linklist.printList();
 
-        Linklist.insertElementAtFront(1);
-        System.out.println("insert Element At Front");
+        Linklist.insertNodeAtFront(1);
+        System.out.println("insert Node At Front");
         Linklist.printList();
 
         System.out.println("================================"
-                + "insert Element At Last");
-        Linklist.insertElementAtEnd(50);
+                + "insert Node At Last");
+        Linklist.insertNodeAtEnd(50);
         Linklist.printList();
 
         System.out.println("================================"
-                + "insert Element At Middle");
-        Linklist.insertElementAtMiddle(100, 2);
+                + "insert Node At Middle");
+        Linklist.insertNodeAtMiddle(100, 2);
         Linklist.printList();
 
+        System.out.println("================================"
+                + "Delete Node At First");
+        Linklist.deleteNodeAtStart();
+
+        Linklist.printList();
+        System.out.println("================================"
+                + "Delete Node At End");
+
+        Linklist.deleteNodeAtEnd();
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "Delete Node At given postion");
+
+        Linklist.deleteNodeAtPosition(2);
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "Delete Node At Matched postion");
+
+        Linklist.deleteNodeAtMatchedPos(20);
+        Linklist.printList();
     }
 
     private void printList()
@@ -58,28 +78,31 @@ public class CustomLinkList
 
     }
 
-    private void insertElementAtFront(int val)
+    private void printList(Node p)
     {
-
-        /*If the Linked List is empty, then make the 
-            new node as head */
-        if (head == null)
+        Node node = p;
+        while (node != null)
         {
-            head = new Node(val);
-            return;
+            System.out.println(node.data);
+            node = node.next;
         }
+
+    }
+
+    private void insertNodeAtFront(int val)
+    {
         Node newNode = new Node(val);
         newNode.next = head;
         head = newNode;
 
     }
 
-    private void insertElementAtEnd(int val)
+    private void insertNodeAtEnd(int val)
     {
 
         Node new_node = new Node(val);
 
-        /*If the Linked List is empty, then make the 
+        /* If the Linked List is empty, then make the 
             new node as head */
         if (head == null)
         {
@@ -99,9 +122,17 @@ public class CustomLinkList
 
     }
 
-    public void insertElementAtMiddle(int val, int pos)
+    private void insertNodeAtMiddle(int val, int pos)
     {
         Node new_node = new Node(val);
+
+        /*If the Linked List is empty, then make the 
+            new node as head */
+        if (head == null)
+        {
+            head = new Node(val);
+            return;
+        }
 
         Node middle = head;
         int count = 0;
@@ -116,6 +147,100 @@ public class CustomLinkList
         middle.next = new_node;
         middle = middle.next;
         new_node.next = nodeAtPostion;
+
+    }
+
+    public void deleteNodeAtLast()
+    {
+        if (head == null)
+            return;
+        Node p = head, q = null, next = head.next;
+
+        while ((next = p.next) != null)
+        {
+            q = p;
+            p = next;
+        }
+        q.next = null;
+
+        printList(head);
+
+    }
+
+    private void deleteNodeAtEnd()
+    {
+        if (head == null)
+            return;
+
+        Node temp = head;
+
+        while (temp.next.next != null)
+        {
+            temp = temp.next;
+        }
+
+        temp.next = null;
+
+    }
+
+    private void deleteNodeAtPosition(int position)
+    {
+        if (head == null)
+            return;
+
+        // Store head node 
+        Node temp = head;
+
+        // If head needs to be removed 
+        if (position == 0)
+        {
+            head = temp.next; // Change head 
+            return;
+        }
+
+        for (int i = 1; i < position; i++)
+        {
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+
+    }
+
+    private void deleteNodeAtMatchedPos(int key)
+    {
+        if (head == null)
+            return;
+
+        // Store head node 
+        Node temp = head;
+        Node prev = null;
+
+        // If head node itself holds the key to be deleted 
+        if (temp != null && temp.data == key)
+        {
+            head = temp.next; // Changed head 
+            return;
+        }
+
+        while (temp != null && temp.data != key)
+        {
+            prev = temp;
+            temp = temp.next;
+        }
+        prev.next = temp.next;
+
+    }
+
+    private void deleteNodeAtStart()
+    {
+        if (head == null)
+        {
+            return;
+        }
+
+        Node node = head.next;
+        head = node;
     }
 
 }

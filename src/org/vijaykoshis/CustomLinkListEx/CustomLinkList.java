@@ -1,4 +1,4 @@
-package LinkList;
+package org.vijaykoshis.CustomLinkListEx;
 
 public class CustomLinkList
 {
@@ -15,57 +15,6 @@ public class CustomLinkList
             this.data = data;
             next = null;
         }
-    }
-
-    public static void main(String[] args)
-    {
-        CustomLinkList Linklist = new CustomLinkList();
-        Linklist.head = new Node(5);
-        Node secound = new Node(10);
-        Node third = new Node(20);
-        Node forth = new Node(30);
-        Linklist.head.next = secound;
-        secound.next = third;
-        third.next = forth;
-
-        Linklist.printList();
-
-        Linklist.insertNodeAtFront(1);
-        System.out.println("insert Node At Front");
-        Linklist.printList();
-
-        System.out.println("================================"
-                + "insert Node At Last");
-        Linklist.insertNodeAtEnd(50);
-        Linklist.printList();
-
-        System.out.println("================================"
-                + "insert Node At Middle");
-        Linklist.insertNodeAtMiddle(100, 2);
-        Linklist.printList();
-
-        System.out.println("================================"
-                + "Delete Node At First");
-        Linklist.deleteNodeAtStart();
-
-        Linklist.printList();
-        System.out.println("================================"
-                + "Delete Node At End");
-
-        Linklist.deleteNodeAtEnd();
-        Linklist.printList();
-
-        System.out.println("================================"
-                + "Delete Node At given postion");
-
-        Linklist.deleteNodeAtPosition(2);
-        Linklist.printList();
-
-        System.out.println("================================"
-                + "Delete Node At Matched postion");
-
-        Linklist.deleteNodeAtMatchedPos(20);
-        Linklist.printList();
     }
 
     private void printList()
@@ -242,6 +191,57 @@ public class CustomLinkList
 
         Node node = head.next;
         head = node;
+    }
+
+    public static void main(String[] args)
+    {
+        CustomLinkList Linklist = new CustomLinkList();
+        Linklist.head = new Node(5);
+        Node secound = new Node(10);
+        Node third = new Node(20);
+        Node forth = new Node(30);
+        Linklist.head.next = secound;
+        secound.next = third;
+        third.next = forth;
+
+        Linklist.printList();
+
+        Linklist.insertNodeAtFront(1);
+        System.out.println("insert Node At Front");
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "insert Node At Last");
+        Linklist.insertNodeAtEnd(50);
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "insert Node At Middle");
+        Linklist.insertNodeAtMiddle(100, 2);
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "Delete Node At First");
+        Linklist.deleteNodeAtStart();
+
+        Linklist.printList();
+        System.out.println("================================"
+                + "Delete Node At End");
+
+        Linklist.deleteNodeAtEnd();
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "Delete Node At given postion");
+
+        Linklist.deleteNodeAtPosition(2);
+        Linklist.printList();
+
+        System.out.println("================================"
+                + "Delete Node At Matched postion");
+
+        Linklist.deleteNodeAtMatchedPos(20);
+        Linklist.printList();
     }
 
 }

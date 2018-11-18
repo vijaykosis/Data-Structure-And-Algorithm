@@ -36,7 +36,6 @@ public class CustomLinkList
             System.out.println(node.data);
             node = node.next;
         }
-
     }
 
     private void insertNodeAtFront(int val)
@@ -44,12 +43,10 @@ public class CustomLinkList
         Node newNode = new Node(val);
         newNode.next = head;
         head = newNode;
-
     }
 
     private void insertNodeAtEnd(int val)
     {
-
         Node new_node = new Node(val);
 
         /* If the Linked List is empty, then make the 

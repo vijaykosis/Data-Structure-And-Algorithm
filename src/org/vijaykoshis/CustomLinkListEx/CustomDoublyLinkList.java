@@ -87,7 +87,7 @@ public class CustomDoublyLinkList
 
         Node new_node = new Node(val);
 
-        if (head == null)
+        if (head.next == null)
         {
             head = new_node;
             return;
@@ -105,6 +105,37 @@ public class CustomDoublyLinkList
         new_node.next = node.next;
         node.next = new_node;
         new_node.prev = nodeAtpostion;
+
+    }
+
+    private void inserNodeAtMatchedPos(int val, int element)
+    {
+        Node node = head;
+
+        Node new_node = new Node(val);
+
+        if (head.next == null)
+        {
+            head = new_node;
+            return;
+        }
+
+        while (node != null)
+        {
+
+            node = node.next;
+
+            if (node.data == element)
+            {
+                break;
+            }
+
+        }
+        Node temp = node;
+
+        new_node.next = node.next;
+        node.next = new_node;
+        new_node.prev = temp;
 
     }
 
@@ -127,12 +158,67 @@ public class CustomDoublyLinkList
 
         ddl.printDLinkList();
 
-        System.out.println("Insert Node At End");
+        System.out.println("Insert Node At Middle");
 
         ddl.inserNodeAtMiddle(70, 2);
 
         ddl.printDLinkList();
 
+        System.out.println("Insert Node At given position");
+
+        ddl.inserNodeAtMatchedPos(100, 70);
+        ddl.printDLinkList();
+
+        System.out.println("Delete Node At Front");
+
+        ddl.deleteNodeAtFront();
+        ddl.printDLinkList();
+
+        System.out.println("Delete Node At End");
+
+        ddl.deleteNodeAtEnd();
+        ddl.printDLinkList();
+
+        System.out.println("Delete Node At given position");
+
+        ddl.deleteNodeAtPosition(2);
+        ddl.printDLinkList();
+
     }
 
+    private void deleteNodeAtPosition(int position)
+    {
+
+        Node temp = head;
+        int count = 1;
+        while (temp != null && count < position)
+        {
+            temp = temp.next;
+            count++;
+        }
+
+        temp.next = temp.next.next;
+
+    }
+
+    private void deleteNodeAtEnd()
+    {
+
+        Node temp = head;
+        while (temp.next.next != null)
+        {
+            temp = temp.next;
+
+        }
+        temp.next = null;
+
+    }
+
+    private void deleteNodeAtFront()
+    {
+
+        Node temp = head.next;
+        head = temp;
+        head.prev = null;
+    }
 }

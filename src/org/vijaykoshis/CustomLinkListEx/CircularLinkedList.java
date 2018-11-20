@@ -64,21 +64,34 @@ public class CircularLinkedList
 
     }
 
-    public static void main(String[] args)
+    private void deleteNodeAtEnd()
     {
-        System.out.println("Inser Node At Start");
-        CircularLinkedList cll = new CircularLinkedList();
-        cll.insertNodeAtBegining(10);
+        if (head == null)
+            return;
 
-        cll.insertNodeAtBegining(20);
-        cll.insertNodeAtBegining(30);
-        cll.displayAllNode();
+        Node node = head;
+        while (node.next.next != head)
+        {
+            node = node.next;
+        }
+        node.next = head;
+        tail = node;
 
-        System.out.println("insert Node at End");
-        cll.addNodeAtEnd(40);
-        cll.addNodeAtEnd(50);
-        cll.displayAllNode();
+    }
 
+    private void deleteNodeAtStart()
+    {
+        if (size == 0)
+        {
+            System.out.println("\nList is Empty");
+        }
+        else
+        {
+            System.out.println("\ndeleting node " + head.data + " from start");
+            head = head.next;
+            tail.next = head;
+            size--;
+        }
     }
 
     private void displayAllNode()
@@ -98,6 +111,31 @@ public class CircularLinkedList
             }
             while (temp != head);
         }
+    }
 
+    public static void main(String[] args)
+    {
+        System.out.println("Inser Node At Start");
+        CircularLinkedList cll = new CircularLinkedList();
+        cll.insertNodeAtBegining(10);
+
+        cll.insertNodeAtBegining(20);
+        cll.insertNodeAtBegining(30);
+        cll.displayAllNode();
+
+        System.out.println("insert Node at End");
+        cll.addNodeAtEnd(40);
+        cll.addNodeAtEnd(50);
+        cll.displayAllNode();
+
+        System.out.println("Delete Node at Start");
+
+        cll.deleteNodeAtStart();
+        cll.displayAllNode();
+
+        System.out.println("Delete Node at End");
+
+        cll.deleteNodeAtEnd();
+        cll.displayAllNode();
     }
 }

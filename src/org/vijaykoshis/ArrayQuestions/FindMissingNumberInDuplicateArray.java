@@ -1,6 +1,6 @@
 package org.vijaykoshis.ArrayQuestions;
 
-public class FindMissingNumberDuplicateElementInTwoArray
+public class FindMissingNumberInDuplicateArray
 {
 
     static final int NO_OF_CHARS = 256;

@@ -1,7 +1,7 @@
 package org.vijaykoshis.tree;
 
 
-/* Inorder Tree Traversal wit Recursion
+/* Inorder Tree Traversal with Recursion
              1
           /    \
         2       3

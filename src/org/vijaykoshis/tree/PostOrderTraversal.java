@@ -31,6 +31,8 @@ public class PostOrderTraversal {
         root.right.right = new Node(7);
         root.right.left = new Node(6);
         tree.postorderIterative(root);
+        System.out.println("\n postorder Iterative Using One Stack::");
+        tree.postOrderItrOneStack(root);
 
 
     }
@@ -63,4 +65,64 @@ public class PostOrderTraversal {
         }
 
     }
+
+
+    public static void postorderIterativeUsingOneStack(Node root) {
+        if (root == null) {
+            return;
+        }
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        Node prev = null;
+
+        while (!stack.isEmpty()) {
+
+            Node curr = stack.peek();
+
+            if (prev == null || prev.left == curr || prev.right == curr) {
+
+                if (curr.left != null) {
+                    stack.push(curr.left);
+                } else if (curr.right != null) {
+                    stack.push(curr.right);
+                }
+            } else if (curr.left == prev) {
+                if (curr.right != null) {
+                    stack.push(curr.right);
+                }
+            } else {
+                System.out.print(curr.data + "  ");
+                stack.pop();
+            }
+            prev = curr;
+        }
+
+
+    }
+
+    public void postOrderItrOneStack(Node root) {
+        Node current = root;
+        Stack<Node> stack = new Stack<>();
+        while (current != null || !stack.isEmpty()) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+            } else {
+                Node temp = stack.peek().right;
+                if (temp == null) {
+                    temp = stack.pop();
+                    System.out.print(temp.data + " ");
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        System.out.print(temp.data + " ");
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
+    }
+
+
 }

@@ -9,8 +9,6 @@ public class HeapSortMain {
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             heapify(arr, arr.length - 1, i);
         }
-
-
     }
 
     public static void heapify(int arr[], int length, int index) {
@@ -30,8 +28,6 @@ public class HeapSortMain {
             exchange(arr, index, largest);
             heapify(arr, length, largest);
         }
-
-
     }
 
     private static void exchange(int[] arr, int index, int largest) {
@@ -55,7 +51,6 @@ public class HeapSortMain {
         }
         return arr;
     }
-
 
     public static void main(String[] args) {
         int[] arr = {1, 10, 16, 19, 3, 5};
